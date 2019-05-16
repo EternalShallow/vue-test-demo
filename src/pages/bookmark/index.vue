@@ -77,12 +77,12 @@ export default {
           position: absolute;
           right: 120px;
           z-index: 1;
-          width: 6px;
+          width: 0;
           height: 0;
           line-height: 0;
           color: #21232e;
           border: 24px solid rgba(1, 14, 2, 0.8);
-          border-left-color: #fff;
+          border-left-color: transparent;
           border-left-width: 24px;
           /*padding-right: 3px;*/
           text-align: left;
@@ -204,9 +204,9 @@ export default {
           top: -4px;
           left: 0;
           border: 4px solid rgba(1, 14, 2, 0.8);
+          /*border-top-width: 2px;*/
+          /*border-bottom-width: 2px;*/
           border-left-color: transparent;
-          border-top-width: 2px;
-          border-bottom-width: 2px;
           border-top-color: transparent;
         }
       }
