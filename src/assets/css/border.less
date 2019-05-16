@@ -1,0 +1,130 @@
+@charset "utf-8";
+@minFont: 16;
+@maxFont: 50;
+@dpr: 2;
+.mt2 {
+  margin-top: 1px;
+}
+.mb2 {
+  margin-bottom: 1px;
+}
+.mt8 {
+  margin-top: 4px;
+}
+.mt10 {
+  margin-top: 5px;
+}
+.pt2{
+  padding-top: 2px;
+}
+
+
+//.fs32{
+//  font-size: 32px;
+//
+//}
+.font-dpr(@font-size, @scale:2){
+  @font: @font-size/@scale;
+  [data-dpr='1'] .fs@{font-size} {
+    font-size: unit(@font,px);
+  }
+  [data-dpr='2'] .fs@{font-size} {
+    font-size: unit(@font * 2,px);
+  }
+  [data-dpr='3'] .fs@{font-size} {
+    font-size: unit(@font * 3,px);
+  }
+}
+
+.setFontSize(@min) when (@min <= @maxFont){
+  .font-dpr(@min,@dpr);
+  .setFontSize(@min + 2);
+}
+
+.setFontSize(@minFont);
+
+
+
+#loading_main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  background: white;
+  box-sizing: border-box;
+}
+#loading_main ul {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 90px;
+  //margin-left: -45px;
+  list-style: none;
+  transform: translateX(-50%);
+  padding:0;
+}
+#loading_main ul li {
+  width: 5px;
+  height: 30px;
+  margin-right: 10px;
+  background: #e5483f;
+  float: left;
+  -webkit-animation: 2s linear infinite loadingMove;
+  animation: 2s linear infinite loadingMove;
+}
+@-webkit-keyframes loadingMove {
+  0% {
+    -webkit-transform: scaleY(1);
+  }
+  50% {
+    -webkit-transform: scaleY(0.2);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+  }
+}
+@keyframes loadingMove {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.2);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+#loading_main ul li:nth-of-type(1) {
+  -webkit-animation-delay: -0s;
+  animation-delay: -0s;
+}
+#loading_main ul li:nth-of-type(2) {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s;
+}
+#loading_main ul li:nth-of-type(3) {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
+}
+#loading_main ul li:nth-of-type(4) {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+#loading_main ul li:nth-of-type(5) {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+#loading_main ul li:nth-of-type(6) {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+#loading_main div {
+  font-size: 20px;
+  color: #e5483f;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  position: absolute;
+}

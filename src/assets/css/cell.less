@@ -1,0 +1,76 @@
+@charset "utf-8";
+@import "./fun";
+.cell-group{
+  .header{
+    padding-top: 26px;
+    line-height: 44px;
+    overflow: hidden;
+    color:@noteColor;
+
+  }
+  .footer{
+    //padding-top: 26px;
+    line-height: 44px;
+    color:@noteColor;
+  }
+}
+
+
+.cell{
+  width: 100%;
+  min-height: 80px;
+  background-color: white;
+  padding:18px 30px;
+  .label {
+    line-height: 1;
+    color: @color333;
+  }
+  .flex1 {
+    overflow: hidden;
+    color: @noteColor;
+    text-align: right;
+
+    line-height: 44px;
+
+
+  }
+
+  .right {
+    .iconfont {
+      margin-right: -.25em;
+    }
+  }
+  input:not([type='checkbox']), textarea {
+    color: inherit;
+    line-height: inherit;
+    text-align: right;
+    //padding: 0 10px;
+    //margin-right: -10px;
+    width: 100%;
+    font-weight: 300;
+    font-family: inherit;
+  }
+
+  input.emColor:not([type='checkbox']),textarea.emColor{
+    color: @emColor;
+  }
+
+
+
+  //&:active,&.active{
+  //  opacity: .6;
+  //  transition: opacity 200ms ease-in-out;
+  //}
+
+
+}
+
+.cell + .cell,.cell + .cell-group,.cell-group + .cell-group,.cell-group + .cell{
+  margin-top: 5px;/*no*/
+}
+
+.cell-group {
+  .cell + .cell{
+    margin-top: 1px;/*no*/
+  }
+}

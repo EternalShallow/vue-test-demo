@@ -1,0 +1,299 @@
+@charset "utf-8";
+@import 'fun.less';
+.tabber{
+  //position:fixed;
+  //top:0;
+  //left:0;
+  //right:0;
+  z-index: 200;
+  &.addTabbar{
+    position: relative;
+  }
+}
+textarea{
+  border: none;
+}
+.page{
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  position: absolute;
+  left: 0;
+  top:0;
+ /* overflow-x: hidden;
+  overflow-y: scroll;*/
+}
+.content{
+  width: 100%;
+  height: 100%;
+  padding-top: 2px;
+  flex: 1;
+  //padding:90px 0 130px 0;
+}
+.detailMain{
+  //position:absolute;
+  //top:100px;
+  //left:0;
+  //right:0;
+  ////bottom: 110px;
+  //bottom: 130px;
+  //padding-top: 2px;
+  z-index: 100;
+  //overflow: hidden;
+  //position: relative;
+  //flex: 1;
+  //overflow-y: scroll;
+  .detailHead{
+    background-color: #fff;
+    .imgMain{
+      padding-bottom: 20px;
+      .imgBox{
+        width:154px;
+        height:154px;
+        background-color:@colorcf;
+        overflow: hidden;
+        margin-right: 10px;
+        .img{
+          width:100%;
+          height:100%;
+        }
+      }
+      .addImgBox{
+        width:154px;
+        height:154px;
+        overflow: hidden;
+        border: 2px solid @colord8;
+        position: relative;
+        &:before,&:after{
+          content:'';
+          position: absolute;
+          top:50%;
+          left:50%;
+          transform: translate(-50%,-50%);
+          background-color: @colord8;
+        }
+        &:before{
+          width:2px;
+          height:77px;
+        }
+        &:after{
+          width:77px;
+          height:2px;
+        }
+      }
+    }
+    .proName{
+      min-height: 6em;
+      padding-top:10px;
+      padding-bottom: 10px;
+      position: relative;
+      border-top: 2px solid @bgColor;
+      line-height: 1.2em;
+      .proNameCount{
+        position: absolute;
+        right:30px;
+        bottom: 20px;
+      }
+      .proNameText{
+        width:100%;
+        height:100%;
+      }
+    }
+  }
+  .detail80{
+    height: 80px;
+    display: flex;
+    background-color: #FFFFFF;
+    line-height: 80px;
+    span:first-child{
+      width:20%;
+    }
+    .deleteIcon{
+      width:40px;
+      height:40px;
+      border-radius: 50%;
+      border:2px solid @emColor;
+      position: relative;
+      &:before{
+        content: '';
+        position: absolute;
+        width:20px;
+        height:2px;
+        left:50%;
+        top:50%;
+        background-color: @emColor;
+        transform: translate(-50%,-50%);
+      }
+    }
+  }
+  .time80{
+    height: 80px;
+    display: flex;
+    background-color: #FFFFFF;
+    line-height: 80px;
+    span.timeText{
+      width:20%;
+    }
+  }
+  .addProType{
+    height:80px;
+    line-height: 80px;
+  }
+  .limitNum{
+    text-align: right;
+    margin-left: 30px;
+  }
+}
+.btnBox {
+  height: 100px;
+  background: #fff;
+  width: 100%;
+  //position: fixed;
+  //bottom: 0;
+  //left: 0;
+  z-index: 200;
+  box-shadow:3px 3px 8px 3px @colorcf;
+  &.addBtn{
+    position: relative;
+  }
+}
+/*page2部分*/
+.page2 {
+  width:100%;
+  height:100%;
+  position: absolute;
+  left: 0;
+  top:0;
+  display: flex;
+  flex-direction: column;
+  .pop {
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,.4);
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    z-index:50;
+  }
+  .btnBox {
+    height: 100px;
+    background: #fff;
+    width: 100%;
+    position: relative;
+    //position: absolute;
+    //bottom: 0;
+    //left: 0;
+    z-index: 20;
+  }
+  .page2add{
+    position:absolute;
+    bottom:350px;
+    right:50px;
+    z-index:20;
+  }
+  .iconadd{
+    font-size: 80px;
+    color:@noteColor;
+  }
+  .iconadd1Box{
+    border-radius: 50%;
+    position:relative;
+    .iconadd1{
+      font-size: 80px;
+      color:@emColor;
+    }
+    .iconadd1bg{
+      background: #fff;
+      width: 65px;
+      height:65px;
+      border-radius: 50%;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      z-index: -1;
+    }
+  }
+  .icontu{
+    font-size: 160px;
+    color:#df8f8e;
+  }
+  .icontubg{
+    background: #fff;
+    width: 100px;
+    height:100px;
+    border-radius: 50%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+  }
+  /*编辑内容区域*/
+  .form{
+    box-sizing: border-box;
+    padding: 20px 30px;
+    width: 100%;
+    position: absolute;
+    top:100px;
+    left:0;
+    bottom:100px;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .html5{
+    box-sizing: border-box;
+    //padding: 20px 30px;
+    width: 100%;
+    position: relative;
+    flex:1;
+    //position: absolute;
+    //top:100px;
+    //left:0;
+    //bottom:100px;
+    z-index: 10;
+    overflow-y: scroll;
+  }
+  .btnBox {
+    height: 100px;
+    background: #fff;
+    width: 100%;
+    //position: relative;
+    //position: absolute;
+    //bottom: 0;
+    //left: 0;
+    z-index: 20;
+  }
+  .content{
+    width: 100%;
+    height:100%;
+    resize: none;
+    font-size: 37px;
+    font-weight: 300;
+    border: none;
+    outline: none;
+    overflow-y: scroll;
+  }
+  .content:empty:before{
+    content: attr(placeholder);
+    color: #bbb;
+  }
+  .html5.addHtml5{
+    bottom: 0;
+    //overflow: hidden;
+  }
+}
+// 秒杀拼团  不可编辑变色
+.noEditor {
+  background: #eaeaea;
+  color: #8a8a8a;
+}
+/deep/.detailMain .detailHead{
+  background: #eaeaea;
+  color: #8a8a8a;
+}
+.detailMain .noEditor{
+  background: #eaeaea;
+  color: #8a8a8a;
+}

@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+
+@emColor:#ff6801;
+@beautyColor:#fc3378;
+@retailColor:#ff431b;
+@colordefult:#ffa031;
+@ffb888:#ffb888;
+@bdColor:#e5e5e5;
+@noteColor:#5f5f5f;
+@bgColor:#f4f4f4;
+@color333:#333;
+@colorcf:#cfcfcf;
+@colorc7:#c7c7cd;
+@colorPrice:#b00101;
+@loadColor:#ededed;
+@b4b4b4:#b4b4b4;
+@color90:#909090;
+@cellH:80;
+@colord8:#d8d8d8;
+@btne70800:#e70800;
+@colordf:#dfdfdf;
+
+
+@linearColors: #a500b0, #ff0070, #ff566b;
+@linearPos:0%, 60%, 100%;
+
+.linearbg(){
+  background-image:linear-gradient(
+          to right,
+          extract(@linearColors, 1) extract(@linearPos, 1),
+          extract(@linearColors, 2) extract(@linearPos, 2),
+          extract(@linearColors, 3) extract(@linearPos, 3)
+  );
+}
+
+.linearfont(){
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  .linearbg();
+}
+
+.linearborder(){
+  border-image: linear-gradient(
+          to right,
+          extract(@linearColors, 1) extract(@linearPos, 1),
+          extract(@linearColors, 2) extract(@linearPos, 2),
+          extract(@linearColors, 3) extract(@linearPos, 3)
+  );
+}
