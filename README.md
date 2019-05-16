@@ -1,6 +1,7 @@
 # vue 移动端项目demo、插件、案例集锦
-> 使用 lib-flexible/flexible 淘宝rem适配方案px为实际的2倍，所以项目中使用的px比如说字体大小为12px 则在css中需写为24px，自动转成rem适配屏幕
-
+``` bash
+使用 lib-flexible/flexible 淘宝rem适配方案px为实际的2倍，所以项目中使用的px比如说字体大小为12px 则在css中需写为24px，自动转成rem适配屏幕
+``` 
 > test vue demo
 
 ## Build Setup
