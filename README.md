@@ -21,6 +21,10 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 文件目录结构
 
+### 目录结构
+
+```
+
 ├── README.md
 ├── build
 │   ├── build.js
@@ -81,3 +85,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 │   └── router
 │       └── index.js
 └── static
+
+```
