@@ -22,11 +22,110 @@
 </template>
 
 <script>
-export default {
-  name: 'toast'
+let t1
+export default{
+  props: {
+    isShow: {
+      type: Boolean,
+      default: false
+    },
+    text: {
+      default: 'loading'
+    },
+    type: {
+      default: 'loading',
+      require: true
+    },
+    opacity: {
+      default: 'opacity0'
+    },
+    time: {
+      default: 2000
+    },
+    done: {
+      type: Function,
+      default: null
+    }
+  },
+  data () {
+    return {
+      isShowToastBox: false
+    }
+  },
+  methods: {
+    showToastBox: function (time) {
+      this.isShowToastBox = true
+      this.downToast(time)
+    },
+    destroy: function () {
+      this.$destroy()
+      document.body.removeChild(this.$el)
+    },
+    downToast (time) { // 定时器 time=0 永久展示
+      let that = this
+      if (Number(time) === 0) {
+        that.isShowToastBox = true
+      } else {
+        t1 = setTimeout(function () {
+          that.isShowToastBox = false
+          that.done && that.done()
+          clearTimeout(t1) // 去掉定时器
+        }, time)
+      }
+    }
+  }
 }
 </script>
-
-<style scoped>
-
+<style scoped lang="less">
+  .opacity0{
+    background: rgba(0,0,0,0);
+  }
+  .opacity3{
+    background: rgba(0,0,0,.3);
+  }
+  .opacity5{
+    background: rgba(0,0,0,.5);
+  }
+  .toast{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 9999900;
+    .rectangleBox{
+      min-width: 150px;
+      max-width: 400px;
+      padding: 18px 20px;
+      background: rgba(0,0,0,.6);
+      border-radius: 10px;
+      text-align: center;
+      color: rgba(255,255,255,1);
+      font-size: 26px;
+    }
+    .squareBox{
+      width: 240px;
+      height:240px;
+      background: rgba(0,0,0,.6);
+      border-radius: 10px;
+      text-align: center;
+      color: rgba(255,255,255,1);
+      box-sizing: border-box;
+      padding-top: 30px;
+    }
+    .pclass{
+      max-width: 200px;
+    }
+    .textclass1{
+      font-size: 26px;
+      margin-top: 30px;
+    }
+    .fs60{
+      font-size: 80px;
+    }
+    .spinner{
+      width: 70px;
+      height: 70px;
+    }
+  }
 </style>
