@@ -5,6 +5,7 @@ import Home from '../pages/home/index'
 import UserHelp from '../pages/home/userHelp'
 
 import BookMark from '../pages/bookmark' // 主路由
+import Object from '../pages/object' // 主路由
 
 Vue.use(Router)
 
@@ -51,6 +52,48 @@ export default new Router({
               [],
               () => r(require('../pages/bookmark')),
               'demo.bookmark'
+            )
+        }
+      ]
+    },
+    {
+      // 对象
+      path: '/object',
+      icon: 'lock-combination',
+      name: 'argument',
+      title: '对象',
+      component: Object,
+      children: [
+        {
+          path: 'argument',
+          icon: 'lock-combination',
+          name: 'object_argument',
+          title: '对象',
+          meta: {
+            title: '对象-index',
+            keepAlive: false
+          },
+          component: r =>
+            require.ensure(
+              [],
+              () => r(require('../pages/object/objectArgument')),
+              'demo.objectArgument'
+            )
+        },
+        {
+          path: 'index',
+          icon: 'lock-combination',
+          name: 'object_index',
+          title: '对象',
+          meta: {
+            title: '对象-index',
+            keepAlive: false
+          },
+          component: r =>
+            require.ensure(
+              [],
+              () => r(require('../pages/object/index')),
+              'demo.objectArgument'
             )
         }
       ]
