@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  /**
+   *原型链继承
+   */
+  function Plane(color) {
+    this.color = color
+  }
+
+  Plane.prototype.fly = function () {
+    console.log('flying......')
+  }
+
+
+  function Fighter() {
+    this.bullets = []
+  }
+
+  /**
+   * 打通原型链
+   * 原型链指向问题
+   * 数据共享问题
+   * 参数问题
+   * @type {Plane}
+   */
+  Fighter.prototype = new Plane('blue')
+  Fighter.prototype.constructor = Fighter  //  原型链指向问题，若不重新指向，则会指向Plane父类
+
+
+  Fighter.prototype.shoot = function () {
+    console.log('biu biu biu ......')
+  }
+
+  var fighter1 = new Fighter();
+  console.log(fighter1.color)
+  fighter1.fly()
+  fighter1.shoot()
+
+</script>
+
+
+<script>
+
+  /**
+   * 构造函数继承
+   * @param color
+   * @constructor
+   */
+
+  function Plane(color) {
+    this.color = color
+  }
+
+  Plane.prototype.fly = function () {  // 继承不到
+    console.log('flying......')
+  }
+
+
+  function Fighter(color) {
+    Plane.call(this, color)
+    this.bullets = []
+  }
+
+  Fighter.prototype.shoot = function () {
+    console.log('biu biu biu ......')
+  }
+
+
+  var flighter2 = new Fighter("red")
+  console.log(flighter2)
+
+
+</script>
+
+
+<script>
+
+  /**
+   * 组合继承
+   * 属性和方法都是从父类继承的（代码复用）
+   * 继承的属性是私有的（互不影响）
+   * 继承的方法都在原型里（函数复用）
+   *
+   *
+   * 不足：
+   * 重复调用
+   * 属性冗余
+   *
+   *
+   * @param color
+   * @constructor
+   */
+
+  function Plane(color) {
+    this.color = color
+  }
+
+  Plane.prototype.fly = function () {  // 继承不到
+    console.log('flying......')
+  }
+
+
+  function Fighter(color) {
+    // 借用构造函数继承属性
+    Plane.call(this, color)  // 第二次调用
+    this.bullets = []
+  }
+
+  //  继承属性和方法
+  Fighter.prototype = new Plane()   // 第一次调用
+  Fighter.prototype.constructor = Fighter
+
+  Fighter.prototype.shoot = function () {
+    console.log('biu biu biu ......')
+  }
+
+
+</script>
+
+
+<script>
+
+  /**
+   * 最佳实践对象的继承
+   * @param color
+   * @constructor
+   */
+
+
+  function Plane(color) {
+    this.color = color
+  }
+
+  Plane.prototype.fly = function () {  // 共享方法
+    console.log('flying......')
+  }
+
+
+  function Fighter(color) {
+    Plane.call(this, color)  // 借用构造函数继承属性
+    this.bullets = []
+  }
+
+  inhritPrototype(Fighter, Plane);  // 继承父类的方法
+
+  Fighter.prototype.shoot = function () {  //  私有方法
+    console.log('biu biu biu ......')
+  }
+  var f = new Fighter("blue")
+  console.log(f)
+
+
+  /**
+   * 步骤：
+   * 1.创建一个对象
+   * 2.原型 -> param
+   * 3.返回一个对象
+   *
+   * @param child
+   * @param parent
+   */
+  function inhritPrototype(child, parent) {
+
+
+    //第一种方式
+    var proto = Object.create(parent.prototype) // 复制父类的原型
+    proto.constructor = parent  //  重置constructor
+    child.prototype = proto  // 修改子类原型
+
+
+    // 第二种方式
+    var Temp = function (){};
+    Temp.prototype = parent.prototype
+    child.prototype = new Temp()
+    child.prototype.constructor = child;
+
+
+  }
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

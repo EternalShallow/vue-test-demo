@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  /**
+   * 构造函数解决的问题就是证明bottle是Bottle
+   *
+   * 通过构造函数声明的对象会共享原型（声明对象里边有函数）   可以解决浪费内存的问题
+   *
+   * @param price
+   * @param name
+   * @param isKeepWarm
+   * @constructor
+   */
+  function Bottle(price, name, isKeepWarm) {
+    this.name = name;
+    this.price = price;
+    this.isKeepWarm = isKeepWarm
+  }
+
+  var bottle = new Bottle(45, '保温杯', true)
+  console.log(bottle)
+  console.log(bottle instanceof Bottle)
+
+
+</script>
+
+</body>
+</html>

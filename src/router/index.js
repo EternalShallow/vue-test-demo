@@ -31,6 +31,20 @@ export default new Router({
       }
     },
     {
+      path: '/html2canvas',
+      name: 'html2canvas',
+      component: r =>
+        require.ensure(
+          [],
+          () => r(require('../pages/html2canvas')),
+          'demo.html2canvas'
+        ),
+      meta: {
+        title: 'html2canvas',
+        keepAlive: false
+      }
+    },
+    {
       // 书签样式样式
       path: '/bookmark',
       icon: 'lock-combination',

@@ -7,9 +7,9 @@ export default {
   name: 'objectTest',
   created () {
     // console.log(this.createBottle(1, 'as', false))
-    console.log(this.quote('hello world', {char: '*'}))
-    console.log(this.quote('hello worlh', {char: 'h', shipIfQuoted: true}))
-    console.log(this.quote('Sunny day'))
+    // console.log(this.quote('hello world', {char: '*'}))
+    // console.log(this.quote('hello worlh', {char: 'h', shipIfQuoted: true}))
+    // console.log(this.quote('Sunny day'))
   },
   methods: {
     createBottle () {
@@ -18,6 +18,11 @@ export default {
         price: arguments[1],
         isKeepWarn: arguments[2]
       }
+    },
+    Bottle (price, name, isKeepWarm) {
+      this.price = price
+      this.name = name
+      this.prisKeepWarmice = isKeepWarm
     },
     quote (str, {char = '', shipIfQuoted = true} = {}) {
       console.log(arguments)
