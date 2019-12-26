@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import 'lib-flexible/flexible' // 淘宝rem适配方案
 import '@/assets/css/border.less'
 import MessageBox from '@/components/confirm/confirm'
@@ -16,6 +17,7 @@ let info = {
 }
 window.vue = new Vue({
   el: '#app',
+  store,
   router,
   data: {
     params: info

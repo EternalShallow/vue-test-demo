@@ -38,8 +38,11 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-    }
+    },
+    // 使用绝对路径指明第三方模块存放的位置，以减少搜索步骤
+    // modules: [path.resolve(__dirname,'node_modules')]
   },
+  externals: {},
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
@@ -49,10 +52,18 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
+        // 1、如果项目源码中只有js文件，就不要写成/\.jsx?$/，以提升正则表达式的性能
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        // 2、babel-loader支持缓存转换出的结果，通过cacheDirectory选项开启
+        loader: 'babel-loader?cacheDirectory',
+        // 3、只对项目根目录下的src 目录中的文件采用 babel-loader
+        include: [resolve('src')]
       },
+      // {
+      //   test: /\.js$/,
+      //   loader: 'babel-loader',
+      //   include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+      // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
@@ -77,7 +88,7 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-    ]
+    ],
   },
   plugins: [
     new SpritesmithPlugin({

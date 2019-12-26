@@ -17,6 +17,11 @@ export default new Router({
       component: HelloWorld
     },
     {
+      path: '/todo',
+      name: 'todo',
+      component: r => require.ensure([], () => r(require('@/pages/todo')))
+    },
+    {
       path: '/',
       name: 'home',
       component: Home
